@@ -43,6 +43,36 @@ This project aims to analyze cardiovascular disease risk factors using a regress
 - **Model Used:** Logistic Regression to classify individuals at risk.
 - **Performance Metrics:** Evaluated using accuracy, precision, recall, and AUC-ROC.
 
+# Process Flow
+## 1. Data Preprocessing
+
+# Missing Values Handling:
+        Used the median for numerical variables (e.g., glucose, systolic_bp) to handle missing values due to robustness against outliers.
+        Used the mode for categorical variables (e.g., sex, is_smoking) for consistency.
+
+# Feature Encoding:
+        Mapped categorical variables to numeric values:
+            sex: Female → 0, Male → 1
+            is_smoking: No → 0, Yes → 1
+
+# Feature Engineering
+
+    Logarithmic Transformations:
+        Applied log1p to highly skewed variables (glucose, systolic_bp, bmi, cigs_per_day) to reduce skewness and stabilize variance.
+
+    Square Root Transformations:
+        Applied sqrt to moderately skewed variables (total_cholesterol, diastolic_bp) for better normalization.
+
+# Data Imbalance Handling
+
+    SMOTE (Synthetic Minority Oversampling Technique):
+        Oversampled the minority class (ten_year_chd = 1) to balance the dataset and improve recall for "at-risk" predictions.
+
+# Model Training
+
+    Trained a Logistic Regression Model with the resampled data to classify individuals as "No Risk" or "At Risk."
+    Used standardized predictors (StandardScaler) to ensure uniform scaling for all features.
+
 ## Key Findings
 - **Blood Pressure & Cholesterol:** Strong correlation between high `sysBP`, `totChol`, and CHD risk.
 - **Smoking & Diabetes:** Smokers and diabetics have a significantly higher probability of developing CHD.
