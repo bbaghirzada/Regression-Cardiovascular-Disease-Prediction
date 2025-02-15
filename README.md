@@ -44,18 +44,17 @@ This project aims to analyze cardiovascular disease risk factors using a regress
 - **Performance Metrics:** Evaluated using accuracy, precision, recall, and AUC-ROC.
 
 # Process Flow
-## 1. Data Preprocessing
 
-# Missing Values Handling:
+### Missing Values Handling:
         Used the median for numerical variables (e.g., glucose, systolic_bp) to handle missing values due to robustness against outliers.
         Used the mode for categorical variables (e.g., sex, is_smoking) for consistency.
 
-# Feature Encoding:
+### Feature Encoding:
         Mapped categorical variables to numeric values:
             sex: Female → 0, Male → 1
             is_smoking: No → 0, Yes → 1
 
-# Feature Engineering
+### Feature Engineering
 
     Logarithmic Transformations:
         Applied log1p to highly skewed variables (glucose, systolic_bp, bmi, cigs_per_day) to reduce skewness and stabilize variance.
@@ -63,12 +62,12 @@ This project aims to analyze cardiovascular disease risk factors using a regress
     Square Root Transformations:
         Applied sqrt to moderately skewed variables (total_cholesterol, diastolic_bp) for better normalization.
 
-# Data Imbalance Handling
+### Data Imbalance Handling
 
     SMOTE (Synthetic Minority Oversampling Technique):
         Oversampled the minority class (ten_year_chd = 1) to balance the dataset and improve recall for "at-risk" predictions.
 
-# Model Training
+### Model Training
 
     Trained a Logistic Regression Model with the resampled data to classify individuals as "No Risk" or "At Risk."
     Used standardized predictors (StandardScaler) to ensure uniform scaling for all features.
